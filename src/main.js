@@ -14,19 +14,6 @@ import '@/icons'
 import i18n from '@/i18n/i18n'
 
 Vue.prototype.$http = axios
-// if (
-//     window.sessionStorage.getItem('theme') !== 'null' &&
-//     window.sessionStorage.getItem('theme') !== null
-// ) {
-//     const theme = window.sessionStorage.getItem('theme')
-//     console.log('theme>>', theme)
-//     store.dispatch('ChangeTheme', theme)
-// } else {
-//     const theme = GLOBAL.defaultTheme
-//     console.log('theme>>', theme)
-//     store.dispatch('ChangeTheme', theme)
-// }
-
 
 Vue.use(ElementUI)
 

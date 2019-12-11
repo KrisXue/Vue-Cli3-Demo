@@ -1,15 +1,9 @@
 <template>
-  <ul
-    class="infinite-list"
-    v-infinite-scroll="load"
-  >
-    <template v-for="(i,key) in count">
-      <li
-        :key="key"
-        class="infinite-list-item"
-      >{{ i }}</li>
-    </template>
-  </ul>
+    <ul class="infinite-list" v-infinite-scroll="load">
+        <template v-for="(i, key) in count">
+            <li :key="key" class="infinite-list-item">{{ i }}</li>
+        </template>
+    </ul>
 </template>
 
 <script>
@@ -28,10 +22,10 @@ export default {
 </script>
 
 <style scope>
-.infinite-list li{
-    background:#f0f1f2;
-    line-height:40px;
-    margin-bottom:10px;
+.infinite-list li {
+    background: #f0f1f2;
+    line-height: 40px;
+    margin-bottom: 10px;
     text-align: center;
 }
 </style>

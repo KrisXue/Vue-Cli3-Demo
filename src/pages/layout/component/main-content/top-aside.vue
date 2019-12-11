@@ -2,29 +2,29 @@
     <aside class="aside__top">
         <span
             class="iconfont icon-nav toggleNavCollapse"
-            :class="{active:isSidebarNavCollapse}"
+            :class="{ active: isSidebarNavCollapse }"
             @click="toggleNavCollapse"
         >
         </span>
         <el-breadcrumb separator="/">
             <transition-group name="breadcrumb">
                 <!-- 防止面包屑导航出现 首页/首页， v-if="route.name!='home'" -->
-                <template v-for="(route,i) in crumbList">
+                <template v-for="(route, i) in crumbList">
                     <el-breadcrumb-item
                         :key="route.name"
-                        :to="{name:route.name}"
-                        v-if="route.name!='home' && route.meta.name!='首页'"
-                        :class="{'is-last-link':i==crumbList.length-1}"
+                        :to="{ name: route.name }"
+                        v-if="route.name != 'home' && route.meta.name != '首页'"
+                        :class="{ 'is-last-link': i == crumbList.length - 1 }"
                     >
-                        {{route.meta.name}}
+                        {{ route.meta.name }}
                     </el-breadcrumb-item>
                 </template>
             </transition-group>
         </el-breadcrumb>
         <div class="aside__top--right">
             <div class="user-msg">
-                <img class="user-img" :src="avatar" alt="">
-                <span class="user-name">{{account}}</span>
+                <img class="user-img" :src="avatar" alt="" />
+                <span class="user-name">{{ account }}</span>
                 <el-dropdown trigger="click" placement="top">
                     <span class="el-dropdown-link">
                         <i class="el-icon-arrow-down el-icon--right"></i>
@@ -60,7 +60,7 @@ export default {
         loginOut() {
             this.$store.commit('LOGIN_OUT')
             /* 防止切换角色时addRoutes重复添加路由导致出现警告 */
-            window.location.reload()
+            // window.location.reload()
         }
     }
 }
