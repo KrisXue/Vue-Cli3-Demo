@@ -18,7 +18,7 @@ const dynamicRoutes = [
         },
         children: [
             {
-                path: 'list',
+                path: '/orderlist',
                 name: 'order-list',
                 component: OrderList,
                 meta: {
@@ -27,7 +27,7 @@ const dynamicRoutes = [
                 }
             },
             {
-                path: 'product',
+                path: '/orderproduct',
                 name: 'product-manage',
                 component: ProductManage,
                 meta: {
@@ -36,7 +36,7 @@ const dynamicRoutes = [
                 },
                 children: [
                     {
-                        path: 'list',
+                        path: '/orderproduct',
                         name: 'product-list',
                         component: ProductionList,
                         meta: {
@@ -45,7 +45,7 @@ const dynamicRoutes = [
                         }
                     },
                     {
-                        path: 'review',
+                        path: '/orderproductreview',
                         name: 'review-manage',
                         component: ReviewManage,
                         meta: {
@@ -56,7 +56,7 @@ const dynamicRoutes = [
                 ]
             },
             {
-                path: 'returnGoods',
+                path: '/returnGoods',
                 name: 'return-goods',
                 component: ReturnGoods,
                 meta: {

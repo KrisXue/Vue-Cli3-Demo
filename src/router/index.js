@@ -18,7 +18,7 @@ export default new Router({
         }
     ],
     mode: 'history',
-    base: '/'
+    base: '/demo/'
 })
 
 /* 准备动态添加的路由 */

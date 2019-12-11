@@ -10,14 +10,32 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/index.scss'
 
 import axios from '@/utils/httpConfig'
+import '@/assets/js/font-size.js'
 import '@/icons'
 import i18n from '@/i18n/i18n'
 
+// 挂载到Vue实例上面
 Vue.prototype.$http = axios
 
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+
+// 主题
+if (window.g.defaultTheme !== '') {
+    if (
+        JSON.parse(window.sessionStorage.getItem('theme')) !== 'null' &&
+        JSON.parse(window.sessionStorage.getItem('theme')) !== null
+    ) {
+        const theme = JSON.parse(window.sessionStorage.getItem('theme'))
+        console.log('theme>>', theme)
+        store.dispatch('ChangeTheme', theme)
+    } else {
+        const theme = window.g.defaultTheme
+        console.log('theme>>', theme)
+        store.dispatch('ChangeTheme', theme)
+    }
+}
 
 router.beforeEach((to, from, next) => {
     if (!store.state.UserToken) {
@@ -41,6 +59,7 @@ router.beforeEach((to, from, next) => {
 })
 
 router.afterEach((to, from, next) => {
+    console.log(from, next)
     const routerList = to.matched
     store.commit('setCrumbList', routerList)
     store.commit('permission/SET_CURRENT_MENU', to.name)

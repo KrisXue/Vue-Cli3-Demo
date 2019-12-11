@@ -16,7 +16,7 @@ const proxyTargetMap = {
     uat: 'http://192.168.11.178:3001'
 }
 const proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
-const publicPath = process.env.NODE_ENV === 'production' ? '/' : '/'
+const publicPath = process.env.NODE_ENV === 'production' ? '/demo' : '/demo'
 const dllPublishPath = '/vendor'
 module.exports = {
     publicPath,

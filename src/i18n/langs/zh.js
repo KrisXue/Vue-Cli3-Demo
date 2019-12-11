@@ -3,7 +3,7 @@ import zhLocale from 'element-ui/lib/locale/lang/zh-CN'
 
 const zh = {
     login: {
-        projectTitle: GLOBAL.project_title_zh || 'Vue-Cli3-Demo',
+        projectTitle: window.g.project_title_zh || 'Vue-Cli3-Demo',
         username: '用户名',
         password: '密码',
         loginBtn: '登录'

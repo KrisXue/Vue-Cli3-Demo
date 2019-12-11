@@ -1,5 +1,8 @@
-let GLOBAL
-GLOBAL = {
+// eslint-disable-next-line no-unused-vars
+// let GLOBAL
+// eslint-disable-next-line prefer-const
+// eslint-disable-next-line import/prefer-default-export
+window.g = {
     CONTEXT12: window.location.host,
     //* **是否访问网关***
     project_title_en: 'Vue-Cli3-Demo',
@@ -16,7 +19,7 @@ GLOBAL = {
     heightSmall: 260,
     heightBig: 300,
     // 默认主题
-    defaultTheme: 'dark',
+    defaultTheme: '',
     // 版本
     version: '1.0'
 }
