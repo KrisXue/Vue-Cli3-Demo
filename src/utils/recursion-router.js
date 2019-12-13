@@ -6,6 +6,8 @@
  */
 
 export function recursionRouter(userRouter = [], allRouter = []) {
+    console.log('userRouter', userRouter)
+    console.log('allRouter', allRouter)
     const realRoutes = allRouter
         .filter(item => userRouter.includes(item.name))
         .map(item => ({

@@ -6,21 +6,18 @@
             @click="toggleNavCollapse"
         >
         </span>
-        <el-breadcrumb separator="/">
-            <transition-group name="breadcrumb">
-                <!-- 防止面包屑导航出现 首页/首页， v-if="route.name!='home'" -->
-                <template v-for="(route, i) in crumbList">
-                    <el-breadcrumb-item
-                        :key="route.name"
-                        :to="{ name: route.name }"
-                        v-if="route.name != 'home' && route.meta.name != '首页'"
-                        :class="{ 'is-last-link': i == crumbList.length - 1 }"
-                    >
-                        {{ route.meta.name }}
-                    </el-breadcrumb-item>
-                </template>
-            </transition-group>
-        </el-breadcrumb>
+        <span class="selectDiv">
+            <el-select v-model="value" placeholder="请选择" size="small">
+                <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                >
+                </el-option>
+            </el-select>
+        </span>
+
         <div class="aside__top--right">
             <div class="user-msg">
                 <img class="user-img" :src="avatar" alt="" />
@@ -47,10 +44,22 @@ import { mapState } from 'vuex'
 
 export default {
     data() {
-        return {}
+        return {
+            options: [
+                {
+                    value: '0',
+                    label: '案场管理'
+                },
+                {
+                    value: '1',
+                    label: '集团管理'
+                }
+            ],
+            value: ''
+        }
     },
     computed: {
-        ...mapState(['isSidebarNavCollapse', 'crumbList']),
+        ...mapState(['isSidebarNavCollapse']),
         ...mapState('permission', ['avatar', 'account'])
     },
     methods: {
@@ -60,7 +69,8 @@ export default {
         loginOut() {
             this.$store.commit('LOGIN_OUT')
             /* 防止切换角色时addRoutes重复添加路由导致出现警告 */
-            // window.location.reload()
+            window.location.reload()
+            this.$router.push('/login')
         }
     }
 }
@@ -91,11 +101,14 @@ export default {
             transform: rotate(90deg);
         }
     }
+    .selectDiv {
+        line-height: 50px;
+    }
 
     .aside__top--right {
         position: absolute;
         right: 10px;
-        top: -1px;
+        // top: -1px;
         bottom: 0px;
         > div {
             position: relative;
@@ -104,6 +117,8 @@ export default {
             vertical-align: middle;
             margin-left: 10px;
             padding: 0 15px;
+            height: 50px;
+            // line-height: 50px;
             cursor: pointer;
             &:hover::after {
                 transform-origin: 0 0;
@@ -119,7 +134,7 @@ export default {
                 bottom: 0;
                 width: 100%;
                 height: 2px;
-                background: #ef4747;
+                background: #4dbcff;
                 transform: scaleX(0);
                 transform-origin: right 0;
                 transition: transform 0.5s;
@@ -139,7 +154,7 @@ export default {
                     left: 18px;
                     top: -12px;
                     border-radius: 20px;
-                    background: red;
+                    background: #4dbcff;
                     color: #fff;
                     text-align: center;
                     font-size: 12px;
@@ -158,6 +173,7 @@ export default {
                 .user-name {
                     color: #758eb5;
                     padding: 0 4px;
+                    font-size: 20px;
                 }
             }
             .iconfont {

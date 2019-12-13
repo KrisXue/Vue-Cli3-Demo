@@ -1,13 +1,18 @@
 <template>
-    <el-menu
-        :collapse="isSidebarNavCollapse"
-        background-color="#304156"
-        text-color="#eee"
-        active-text-color="#4dbcff"
-        :default-active="currentMenu"
-    >
-        <DynamicMenu :menuList="sidebarMenu"></DynamicMenu>
-    </el-menu>
+    <div>
+        <div class="project-name">
+            Vue-Cli3-Demo
+        </div>
+        <el-menu
+            :collapse="isSidebarNavCollapse"
+            background-color="#304156"
+            text-color="#eee"
+            active-text-color="#4dbcff"
+            :default-active="currentMenu"
+        >
+            <DynamicMenu :menuList="sidebarMenu"></DynamicMenu>
+        </el-menu>
+    </div>
 </template>
 
 <script>
@@ -30,3 +35,13 @@ export default {
     }
 }
 </script>
+<style lang="scss" scoped>
+.project-name {
+    font-size: 24px;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    color: #4dbcff;
+    border-bottom: 1px solid #ddd;
+}
+</style>

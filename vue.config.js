@@ -16,7 +16,8 @@ const proxyTargetMap = {
     uat: 'http://192.168.11.178:3001'
 }
 const proxyTarget = proxyTargetMap[process.env.API_TYPE] || proxyTargetMap.prod
-const publicPath = process.env.NODE_ENV === 'production' ? '/demo' : '/demo'
+const publicPath =
+    process.env.NODE_ENV === 'production' ? '/Vue-Cli3-Demo' : '/Vue-Cli3-Demo'
 const dllPublishPath = '/vendor'
 module.exports = {
     publicPath,
@@ -115,7 +116,9 @@ module.exports = {
                 }
             }
         },
-        before: app => {}
+        before: app => {
+            console.log('拦截', app)
+        }
     },
     // eslint-disable-next-line no-dupe-keys
     configureWebpack: config => {

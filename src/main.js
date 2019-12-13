@@ -13,9 +13,15 @@ import axios from '@/utils/httpConfig'
 import '@/assets/js/font-size.js'
 import '@/icons'
 import i18n from '@/i18n/i18n'
+import echarts from 'echarts'
+// 判断是否为mock模式
+if (process.env.NODE_ENV === 'mock') {
+    require('./mock')
+}
 
 // 挂载到Vue实例上面
 Vue.prototype.$http = axios
+Vue.prototype.$echarts = echarts
 
 Vue.use(ElementUI)
 
@@ -61,6 +67,7 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from, next) => {
     console.log(from, next)
     const routerList = to.matched
+    console.log('routerList>>>', routerList)
     store.commit('setCrumbList', routerList)
     store.commit('permission/SET_CURRENT_MENU', to.name)
 })

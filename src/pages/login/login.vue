@@ -102,6 +102,7 @@ export default {
         async login() {
             try {
                 const data = await login(this.loginForm)
+                console.log('data', data)
                 const { token } = data
                 this.$store.commit('LOGIN_IN', token)
                 this.$router.replace('/')

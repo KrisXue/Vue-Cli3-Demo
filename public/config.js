@@ -21,5 +21,20 @@ window.g = {
     // 默认主题
     defaultTheme: '',
     // 版本
-    version: '1.0'
+    version: '1.0',
+    permissionList: {
+        name: 'admin',
+        avatar: '',
+        data: [
+            'login',
+            '404',
+            '403',
+            'layout',
+            'dashboard',
+            'customer',
+            'visitorList',
+            'customerList',
+            'customerGroupList'
+        ]
+    }
 }

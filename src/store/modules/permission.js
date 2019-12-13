@@ -1,7 +1,7 @@
 import { fetchPermission } from '@/api/permission'
-import router, { DynamicRoutes } from '@/router/index'
+import router from '@/router/index'
 import { recursionRouter } from '@/utils/recursion-router'
-import dynamicRouter from '@/router/dynamic-router'
+// import dynamicRouter from '@/router/dynamic-router'
 
 export default {
     namespaced: true,
@@ -42,18 +42,20 @@ export default {
     },
     actions: {
         async FETCH_PERMISSION({ commit, state }) {
-            const permissionList = await fetchPermission()
+            // const permissionList = await fetchPermission()
+            const { permissionList } = window.g
+
             commit('SET_AVATAR', permissionList.avatar)
             commit('SET_ACCOUNT', permissionList.name)
-            const routes = recursionRouter(permissionList.data, dynamicRouter)
-            const MainContainer = DynamicRoutes.find(v => v.path === '')
-            const { children } = MainContainer
-            commit('SET_CONTROL_LIST', [...children, ...dynamicRouter])
-            children.push(...routes)
-            commit('SET_MENU', children)
-            const initialRoutes = router.options.routes
-            router.addRoutes(DynamicRoutes)
-            commit('SET_PERMISSION', [...initialRoutes, ...DynamicRoutes])
+            const routes = recursionRouter(
+                permissionList.data,
+                router.options.routes
+            )
+
+            const MainContainer = routes.find(v => v.path === '')
+            commit('SET_CONTROL_LIST', [...router.options.routes])
+            commit('SET_MENU', MainContainer.children)
+            commit('SET_PERMISSION', [...routes])
         }
     }
 }
